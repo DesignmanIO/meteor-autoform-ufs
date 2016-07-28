@@ -1,0 +1,90 @@
+<template name="ufs_form">
+    <form id="ufs_form">
+        <div class="bar">
+            <button name="upload" type="button" class="btn-upload">Upload</button>
+            <input type="url" name="url" placeholder="http://">
+            <button name="import" type="button" class="btn-upload">Import from URL</button>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th width="10%">Type</th>
+                <th width="10%">Extension</th>
+                <th width="10%" style="text-align: right">Size</th>
+                <th width="10%" style="text-align: right">Progress</th>
+                <th width="10%" style="text-align: right">Access</th>
+                <th width="15%" style="text-align: right">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each files}}
+                {{> ufs_file}}
+            {{else}}
+                <tr>
+                    <td colspan="8" style="text-align: center">No file</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        <select style="display: none;" {{atts}} data-schema-key="{{schemaKey}}" multiple>
+            {{#each files}}
+                <option value="{{_id}}" selected>_id</option>
+            {{/each}}
+        </select>
+    </form>
+</template>
+
+<template name="ufs_file">
+    <tr>
+        <td style="text-align: center">
+            {{#if uploading}}
+                <img src="/spinner.gif" width="48" height="48" class="thumbnail">
+            {{else}}
+                {{#if isAudio}}
+                    <audio src="{{url}}?token={{token}}" controls></audio>
+                {{/if}}
+                {{#if isImage}}
+                    <img src="{{thumb.url}}?token={{thumb.token}}" class="thumbnail">
+                {{/if}}
+                {{#if isText}}
+                    <img src="/file.png" width="48" height="48" class="thumbnail">
+                {{/if}}
+                {{#if isVideo}}
+                    <video src="{{url}}?token={{token}}" controls width="64" height="64"
+                           class="thumbnail"></video>
+                {{/if}}
+            {{/if}}
+        </td>
+        <td><a href="{{url}}?token={{token}}" target="_blank">{{name}}</a></td>
+        <td>{{type}}</td>
+        <td>{{extension}}</td>
+        <td style="text-align: right; white-space: nowrap">{{formatSize size}}</td>
+        <td style="text-align: right">
+            {{progress}}%
+        </td>
+        <td style="text-align: right">
+            {{#if userId}}
+                <span class="private-access">Private</span>
+            {{else}}
+                <span class="public-access">Public</span>
+            {{/if}}
+        </td>
+        <td style="text-align: right">
+            {{#if canAbort}}
+                {{#unless complete}}
+                    {{#if uploading}}
+                        <button name="stop" type="button">Stop</button>
+                    {{else}}
+                        <button name="start" type="button">Start</button>
+                    {{/if}}
+                    <button name="abort" type="button">Abort</button>
+                {{/unless}}
+            {{/if}}
+            {{#if canDelete}}
+                <button class="btn-delete" name="delete" type="button">Delete</button>
+            {{/if}}
+        </td>
+    </tr>
+</template>

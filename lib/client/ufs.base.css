@@ -1,0 +1,96 @@
+/* CSS declarations go here */
+
+#ufs_form {
+    color: #555;
+    font-size: 90%;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#ufs_form a {
+    color: dodgerblue;
+    text-decoration: none;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
+}
+
+#ufs_form a:focus, #ufs_form a:hover {
+    color: deepskyblue;
+    text-decoration: underline;
+}
+
+#ufs_form table {
+    margin: 20px 0;
+    width: 100%;
+}
+
+#ufs_form td {
+    border-bottom: solid 1px #eee;
+    padding: 5px;
+    text-align: left;
+}
+
+#ufs_form th {
+    border-bottom: solid 2px #ddd;
+    padding: 5px;
+    text-align: left;
+}
+
+#ufs_form button {
+    background: #888;
+    border: none;
+    border-radius: 3px;
+    color: #eee;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#ufs_form button:hover {
+    background: #aaa;
+    color: #fff;
+}
+
+#ufs_form .thumbnail {
+    width: 48px;
+    height: auto;
+}
+
+#ufs_form .btn-delete {
+    background-color: #c90000;
+    color: #fff;
+}
+
+#ufs_form .btn-upload {
+    background-color: #009900;
+    color: #fff;
+}
+
+#ufs_form #login-bar {
+    background-color: #eee;
+    border-bottom: solid 1px #ddd;
+    padding: 10px 30px;
+    text-align: left;
+}
+
+#ufs_form .bar {
+    background: #eee;
+    padding: 10px;
+}
+
+#ufs_form .help {
+    color: #888;
+    padding: 10px;
+    line-height: 1.3em;
+}
+
+#ufs_form .private-access {
+    color: #c94501;
+}
+
+#ufs_form .public-access {
+    color: #009900;
+}
