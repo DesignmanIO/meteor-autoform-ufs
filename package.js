@@ -2,7 +2,7 @@ Package.describe({
   summary: "Autoform UFS",
   version: '0.0.2',
   name: "buishi:autoform-ufs",
-  // git: 'https://github.com/DesignmanIO/meteor-autoform-quill',
+  git: 'https://github.com/DesignmanIO/meteor-autoform-ufs',
   documentation: 'README.md'
 });
 
